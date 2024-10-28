@@ -4,7 +4,7 @@ mod wordlist;
 
 fn main() {
     let stdin = stdin();
-    let word: String = String::from(wordlist::WORDLIST.choose(&mut rand::thread_rng()).unwrap().to_owned());
+    let word: String = String::from(wordlist::WORDLIST.choose(&mut rand::thread_rng()).unwrap().to_owned()).to_lowercase();
 
     let mut wrong_guesses: Vec<String> = Vec::new();
     let mut all_guesses  : Vec<String> = Vec::new();
@@ -37,7 +37,7 @@ fn main() {
         let mut guess = String::from("");
 
         let _ = stdin.read_line(&mut guess);
-        guess = guess[0..1].to_string();
+        guess = guess[0..1].to_string().to_lowercase();
 
         if all_guesses.contains(&guess) {
             print!("\x1B[2J\x1B[1;1H");
